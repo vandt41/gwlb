@@ -7,11 +7,12 @@ namespace gwlb {
 
 struct Player {
   int id{};
+  int pos_id;
 
   int jersey_number{};
 
   std::string pos;
-  std::string pos_id;
+  std::string pos_abbr;
 
   std::string name;
 

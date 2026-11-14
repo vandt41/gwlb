@@ -12,7 +12,7 @@ std::vector<Player> loadPlayers(const std::filesystem::path &filePath);
 std::vector<Position> loadRequirements();
 
 void showPlayers();
-void showRequirementForPos(std::string pos_abbr);
+void showRequirementForPos(int pos_id);
 void loadPositionWeights();
 
 } // namespace gwlb

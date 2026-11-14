@@ -1,4 +1,5 @@
 #include "JsonLoader.h"
+#include "Player.h"
 #include "PlayerRating.h"
 
 #include <exception>
@@ -16,10 +17,13 @@ int main(int argc, char *argv[]) {
     std::cerr << "Error: " << e.what() << '\n';
     return 1;
   }
-
+  gwlb::loadRequirements();
   gwlb::showPlayers();
+
   gwlb::showRequirementForPos(gwlb::players[0].pos_id);
-  std::cout << "    OVR\n" << "    " << calculateRating(1);
-  std::cout << "\n    OVR\n" << "    " << positionRating(1, 3);
+  std::cout << "\n    OVR\n"
+            << "    " << positionRating(1, gwlb::players[0].pos_id);
+  std::cout << "\n----------------------\n";
+
   return 0;
 }

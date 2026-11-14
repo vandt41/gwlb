@@ -1,5 +1,6 @@
 #include "JsonLoader.h"
 #include "Player.h"
+#include "PlayerRating.h"
 #include "Position.h"
 
 #include <nlohmann/json.hpp>
@@ -41,11 +42,12 @@ std::vector<Player> loadPlayers(const std::filesystem::path &filePath) {
     Player player;
 
     player.id = item.at("id").get<int>();
+    player.pos_id = item.at("position_id").get<int>();
 
     player.name = item.at("name").get<std::string>();
 
     player.pos = item.at("primary_position").get<std::string>();
-    player.pos_id = item.at("position_id").get<std::string>();
+    player.pos_abbr = item.at("position_abbr").get<std::string>();
 
     player.jersey_number = item.at("jersey_number").get<int>();
 
@@ -71,8 +73,9 @@ void showPlayers() {
     for (const auto &[attribute, value] : player.attributes) {
       std::cout << "  " << attribute << ": " << value << '\n';
     }
+    std::cout << "    OVR\n" << "    " << calculateRating(player.id);
 
-    std::cout << "----------------------\n";
+    std::cout << "\n----------------------\n";
   }
 }
 
@@ -113,10 +116,9 @@ std::vector<Position> loadRequirements() {
   return positions;
 }
 
-void showRequirementForPos(std::string pos_abbr) {
-  positions = gwlb::loadRequirements();
+void showRequirementForPos(int pos_id) {
   for (const auto &pos : positions) {
-    if (pos_abbr == pos.pos_abbr) {
+    if (pos_id == pos.pos_id) {
       std::cout << "\nRequirements for " << pos.name << ":\n";
 
       for (const auto &[attribute, value] : pos.requirements) {
@@ -124,7 +126,6 @@ void showRequirementForPos(std::string pos_abbr) {
       }
     }
   }
-  std::cout << "----------------------\n";
 }
 
 void loadPositionWeights() {
