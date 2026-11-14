@@ -1,0 +1,63 @@
+{
+    "positions": [
+      {
+        "id": "GK",
+        "name": "Goalkeeper",
+        "requirements": {
+          "reflexes": 0.3,
+          "handling": 0.25,
+          "positioning": 0.2,
+          "communication": 0.15,
+          "passing": 0.1
+        }
+      },
+      {
+        "id": "CB",
+        "name": "Centre Back",
+        "requirements": {
+          "defending": 0.3,
+          "positioning": 0.25,
+          "physicality": 0.2,
+          "passing": 0.15,
+          "stamina": 0.1
+        }
+      },
+      {
+        "id": "CM",
+        "name": "Central Midfielder",
+        "requirements": {
+          "passing": 0.25,
+          "positioning": 0.2,
+          "stamina": 0.2,
+          "dribbling": 0.15,
+          "defending": 0.1,
+          "shooting": 0.1
+        }
+      },
+      {
+        "id": "WM",
+        "name": "Winger",
+        "requirements": {
+          "pace": 0.25,
+          "dribbling": 0.2,
+          "passing": 0.15,
+          "shooting": 0.15,
+          "stamina": 0.15,
+          "positioning": 0.1
+        }
+      },
+      {
+        "id": "ST",
+        "name": "Striker",
+        "requirements": {
+          "shooting": 0.3,
+          "positioning": 0.25,
+          "pace": 0.2,
+          "physicality": 0.1,
+          "dribbling": 0.1,
+          "passing": 0.05
+        }
+      }
+    ]
+  }
+  
