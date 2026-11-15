@@ -27,7 +27,7 @@
         },
         {
             "id": 2,
-            "position_abbr": "MF",
+            "position_abbr": "CM",
             "name": "Midfielder",
             "requirements": {
                 "passing": 65,

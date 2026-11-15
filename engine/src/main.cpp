@@ -20,10 +20,5 @@ int main(int argc, char *argv[]) {
   gwlb::loadRequirements();
   gwlb::showPlayers();
 
-  gwlb::showRequirementForPos(gwlb::players[0].pos_id);
-  std::cout << "\n    OVR\n"
-            << "    " << positionRating(1, gwlb::players[0].pos_id);
-  std::cout << "\n----------------------\n";
-
   return 0;
 }

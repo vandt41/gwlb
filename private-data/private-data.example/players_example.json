@@ -5,8 +5,6 @@
             "id": 1,
             "name": "Van",
             "jersey_number": 35,
-            "primary_position": "Winger",
-            "position_id": 2,
             "position_abbr": "W",
             "attributes": {
                 "pace": 65,

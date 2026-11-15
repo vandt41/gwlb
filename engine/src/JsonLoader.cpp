@@ -42,13 +42,23 @@ std::vector<Player> loadPlayers(const std::filesystem::path &filePath) {
     Player player;
 
     player.id = item.at("id").get<int>();
-    player.pos_id = item.at("position_id").get<int>();
 
     player.name = item.at("name").get<std::string>();
 
-    player.pos = item.at("primary_position").get<std::string>();
     player.pos_abbr = item.at("position_abbr").get<std::string>();
-
+    if (player.pos_abbr == "CB") {
+      player.pos_id = 1;
+      player.pos = "Center Back";
+    } else if (player.pos_abbr == "CM") {
+      player.pos_id = 2;
+      player.pos = "Central Midfielder";
+    } else if (player.pos_abbr == "W") {
+      player.pos_id = 3;
+      player.pos = "Winger";
+    } else if (player.pos_abbr == "ST") {
+      player.pos_id = 4;
+      player.pos = "Striker";
+    }
     player.jersey_number = item.at("jersey_number").get<int>();
 
     player.attributes =
@@ -75,6 +85,9 @@ void showPlayers() {
     }
     std::cout << "    OVR\n" << "    " << calculateRating(player.id);
 
+    std::cout << "\n----------------------\n";
+    std::cout << "  |" << player.pos_abbr << "| OVR " << player.pos << "\n"
+              << "      " << positionRating(player.id, player.pos_id);
     std::cout << "\n----------------------\n";
   }
 }
@@ -138,8 +151,8 @@ void loadPositionWeights() {
       break;
 
     case POS_CM:
-      position.weights = {{"passing", 0.30},   {"positioning", 0.20},
-                          {"stamina", 0.30},   {"physicality", 0.1},
+      position.weights = {{"passing", 0.20},   {"positioning", 0.30},
+                          {"stamina", 0.20},   {"physicality", 0.20},
                           {"defending", 0.07}, {"shooting", 0.03}};
       break;
 
