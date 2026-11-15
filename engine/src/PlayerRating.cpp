@@ -2,7 +2,6 @@
 #include "Player.h"
 #include "Position.h"
 #include <iostream>
-
 int calculateRating(int player_id) {
   int rating = 0;
   const gwlb::Player *player = nullptr;

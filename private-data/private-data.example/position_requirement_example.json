@@ -1,0 +1,68 @@
+{
+    "positions": [
+        {
+            "id": 0,
+            "position_abbr": "GK",
+            "name": "Goalkeeper",
+            "requirements": {
+                "reflexes": 0.3,
+                "handling": 0.25,
+                "positioning": 0.2,
+                "communication": 0.15,
+                "passing": 0.1
+            }
+        },
+        {
+            "id": 1,
+            "position_abbr": "CB",
+            "name": "Centre Back",
+            "requirements": {
+                "pace": 50,
+                "defending": 70,
+                "positioning": 60,
+                "physicality": 70,
+                "passing": 65,
+                "stamina": 40
+            }
+        },
+        {
+            "id": 2,
+            "position_abbr": "MF",
+            "name": "Midfielder",
+            "requirements": {
+                "passing": 65,
+                "positioning": 70,
+                "stamina": 75,
+                "physicality": 40,
+                "defending": 50,
+                "shooting": 60
+            }
+        },
+        {
+            "id": 3,
+            "position_abbr": "W",
+            "name": "Winger",
+            "requirements": {
+                "pace": 70,
+                "dribbling": 60,
+                "passing": 50,
+                "shooting": 50,
+                "stamina": 70,
+                "positioning": 40
+            }
+        },
+        {
+            "id": 4,
+            "position_abbr": "ST",
+            "name": "Striker",
+            "requirements": {
+                "shooting": 70,
+                "positioning": 65,
+                "pace": 40,
+                "physicality": 75,
+                "stamina": 65,
+                "passing": 55
+            }
+        }
+    ]
+}
