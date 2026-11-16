@@ -14,5 +14,5 @@ std::vector<Position> loadRequirements();
 void showPlayers();
 void showRequirementForPos(int pos_id);
 void loadPositionWeights();
-
+void loadBadges();
 } // namespace gwlb

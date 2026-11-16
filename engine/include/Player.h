@@ -17,6 +17,8 @@ struct Player {
   std::string name;
 
   std::unordered_map<std::string, double> attributes;
+
+  std::unordered_map<std::string, std::string> badges;
 };
 
 extern std::vector<Player> players;

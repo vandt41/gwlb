@@ -9,6 +9,8 @@
 #include <iostream>
 #include <ostream>
 #include <stdexcept>
+#include <string>
+#include <vector>
 
 namespace gwlb {
 
@@ -28,6 +30,15 @@ std::vector<Player> loadPlayers(const std::filesystem::path &filePath) {
   // Parse JSON
   json data;
   file >> data;
+
+  std::ifstream bf("private-data/badges.json");
+  json badgesJson = json::parse(bf);
+  if (!bf.is_open()) {
+    throw std::runtime_error("Cannot open file: private-data/badges.json");
+  }
+  // load lookup table once
+  std::unordered_map<std::string, std::string> badgeTable =
+      badgesJson.get<std::unordered_map<std::string, std::string>>();
 
   if (data.contains("name")) {
     team_name = data["name"].get<std::string>();
@@ -64,6 +75,21 @@ std::vector<Player> loadPlayers(const std::filesystem::path &filePath) {
     player.attributes =
         item.at("attributes").get<std::unordered_map<std::string, double>>();
 
+    // "Badges" is an array of badge names
+    for (const auto &b : item.value("Badges", json::array())) {
+      if (!b.is_string())
+        continue;
+      const std::string name = b.get<std::string>();
+
+      auto it = badgeTable.find(name);
+      if (it != badgeTable.end())
+        player.badges[name] = it->second; // name -> description
+      else
+        player.badges[name] = ""; // name exists on player, no description
+    }
+    // for (auto it : player.badges) {
+    //   std::cout << it.first << " :" << it.second;
+    // }
     players.push_back(player);
   }
 
@@ -144,28 +170,51 @@ void showRequirementForPos(int pos_id) {
 void loadPositionWeights() {
   for (auto &position : positions) {
     switch (position.pos_id) {
+    // case POS_CB:
+    //   position.weights = {{"pace", 0.035},       {"defending", 0.30},
+    //                       {"positioning", 0.15}, {"physicality", 0.30},
+    //                       {"passing", 0.25},     {"stamina", 0.065}};
+    //   break;
+
+    // case POS_CM:
+    //   position.weights = {{"passing", 0.25},   {"positioning", 0.30},
+    //                       {"stamina", 0.25},   {"physicality", 0.10},
+    //                       {"defending", 0.07}, {"shooting", 0.03}};
+    //   break;
+
+    // case POS_W:
+    //   position.weights = {{"pace", 0.30},    {"dribbling", 0.25},
+    //                       {"passing", 0.10}, {"shooting", 0.05},
+    //                       {"stamina", 0.25}, {"positioning", 0.05}};
+    //   break;
+
+    // case POS_ST:
+    //   position.weights = {{"shooting", 0.30}, {"positioning", 0.10},
+    //                       {"pace", 0.15},     {"physicality", 0.25},
+    //                       {"stamina", 0.15},  {"passing", 0.05}};
+    //   break;
     case POS_CB:
-      position.weights = {{"pace", 0.035},       {"defending", 0.30},
-                          {"positioning", 0.15}, {"physicality", 0.30},
-                          {"passing", 0.25},     {"stamina", 0.065}};
+      position.weights = {{"pace", 0.2},        {"defending", 0.9},
+                          {"positioning", 0.5}, {"physicality", 0.8},
+                          {"passing", 0.5},     {"stamina", 0.2}};
       break;
 
     case POS_CM:
-      position.weights = {{"passing", 0.20},   {"positioning", 0.30},
-                          {"stamina", 0.20},   {"physicality", 0.20},
-                          {"defending", 0.07}, {"shooting", 0.03}};
+      position.weights = {{"passing", 0.7},   {"positioning", 0.8},
+                          {"stamina", 0.7},   {"physicality", 0.3},
+                          {"defending", 0.2}, {"shooting", 0.3}};
       break;
 
     case POS_W:
-      position.weights = {{"pace", 0.30},    {"dribbling", 0.25},
-                          {"passing", 0.10}, {"shooting", 0.05},
-                          {"stamina", 0.25}, {"positioning", 0.05}};
+      position.weights = {{"pace", 0.7},    {"dribbling", 0.8},
+                          {"passing", 0.5}, {"shooting", 0.2},
+                          {"stamina", 0.7}, {"positioning", 0.2}};
       break;
 
     case POS_ST:
-      position.weights = {{"shooting", 0.15}, {"positioning", 0.35},
-                          {"pace", 0.05},     {"physicality", 0.20},
-                          {"stamina", 0.15},  {"passing", 0.10}};
+      position.weights = {{"shooting", 0.8}, {"positioning", 0.8},
+                          {"pace", 0.6},     {"physicality", 0.8},
+                          {"stamina", 0.5},  {"passing", 0.5}};
       break;
 
     default:
