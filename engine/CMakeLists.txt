@@ -14,6 +14,7 @@ add_executable(gwlb_engine
     src/main.cpp
     src/PlayerRating.cpp
     src/JsonLoader.cpp
+    src/SquadAnalyzer.cpp
 )
 
 target_include_directories(gwlb_engine

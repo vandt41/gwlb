@@ -8,7 +8,7 @@
 
 namespace gwlb {
 
-std::vector<Player> loadPlayers(const std::filesystem::path &filePath);
+void loadPlayers(const std::filesystem::path &filePath);
 std::vector<Position> loadRequirements();
 
 void showPlayers();

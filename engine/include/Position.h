@@ -6,7 +6,7 @@
 
 #define POS_CB 1
 #define POS_CM 2
-#define POS_W 3
+#define POS_WS 3
 #define POS_ST 4
 
 namespace gwlb {

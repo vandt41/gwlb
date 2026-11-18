@@ -18,8 +18,7 @@ std::vector<Position> positions;
 std::vector<Player> players;
 std::string team_name;
 using json = nlohmann::json;
-
-std::vector<Player> loadPlayers(const std::filesystem::path &filePath) {
+void loadPlayers(const std::filesystem::path &filePath) {
   // Open JSON file
   std::ifstream file(filePath);
 
@@ -58,16 +57,16 @@ std::vector<Player> loadPlayers(const std::filesystem::path &filePath) {
 
     player.pos_abbr = item.at("position_abbr").get<std::string>();
     if (player.pos_abbr == "CB") {
-      player.pos_id = 1;
+      player.pos_id = POS_CB;
       player.pos = "Center Back";
     } else if (player.pos_abbr == "CM") {
-      player.pos_id = 2;
+      player.pos_id = POS_CM;
       player.pos = "Central Midfielder";
     } else if (player.pos_abbr == "W") {
-      player.pos_id = 3;
+      player.pos_id = POS_WS;
       player.pos = "Winger";
     } else if (player.pos_abbr == "ST") {
-      player.pos_id = 4;
+      player.pos_id = POS_ST;
       player.pos = "Striker";
     }
     player.jersey_number = item.at("jersey_number").get<int>();
@@ -87,13 +86,9 @@ std::vector<Player> loadPlayers(const std::filesystem::path &filePath) {
       else
         player.badges[name] = ""; // name exists on player, no description
     }
-    // for (auto it : player.badges) {
-    //   std::cout << it.first << " :" << it.second;
-    // }
     players.push_back(player);
+    loadRequirements();
   }
-
-  return players;
 }
 void showPlayers() {
   std::cout << team_name;
@@ -109,12 +104,19 @@ void showPlayers() {
     for (const auto &[attribute, value] : player.attributes) {
       std::cout << "  " << attribute << ": " << value << '\n';
     }
-    std::cout << "    OVR\n" << "    " << calculateRating(player.id);
+    std::cout << "      OVR\n" << "      " << calculateRating(player.id);
 
     std::cout << "\n----------------------\n";
-    std::cout << "  |" << player.pos_abbr << "| OVR " << player.pos << "\n"
+
+    std::cout << "  |" << player.pos_abbr << "|OVR " << player.pos << "\n"
               << "      " << positionRating(player.id, player.pos_id);
     std::cout << "\n----------------------\n";
+
+    std::cout << "Badges:\n";
+    for (auto it : player.badges) {
+      std::cout << it.first << "\n";
+    }
+    std::cout << "----------------------\n";
   }
 }
 
@@ -205,7 +207,7 @@ void loadPositionWeights() {
                           {"defending", 0.2}, {"shooting", 0.3}};
       break;
 
-    case POS_W:
+    case POS_WS:
       position.weights = {{"pace", 0.7},    {"dribbling", 0.8},
                           {"passing", 0.5}, {"shooting", 0.2},
                           {"stamina", 0.7}, {"positioning", 0.2}};
