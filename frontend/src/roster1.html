@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101318">
+    <title>GWLB | Player roster</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+            background: #101318;
+            color: #f2f4f7;
+            --panel: #191f28;
+            --line: #303947;
+            --muted: #9aa6b5;
+            --accent: #9be0b5;
+            --soft: #263b32
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0
+        }
+
+        .site-header {
+            padding: 22px 5vw 26px;
+            background: #171c24;
+            border-bottom: 1px solid #29313c
+        }
+
+        .site-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            margin-bottom: 24px
+        }
+
+        .brand {
+            font-weight: 900;
+            letter-spacing: .12em;
+            color: #f2f4f7;
+            text-decoration: none
+        }
+
+        .site-nav nav {
+            display: flex;
+            gap: 8px
+        }
+
+        .site-nav nav a {
+            padding: 8px 12px;
+            border-radius: 8px;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 13px
+        }
+
+        .site-nav nav a.active,
+        .site-nav nav a:hover {
+            background: var(--soft);
+            color: var(--accent)
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-size: 11px;
+            letter-spacing: .15em
+        }
+
+        h1 {
+            margin: 7px 0 4px;
+            font-size: clamp(27px, 4vw, 38px)
+        }
+
+        header p,
+        .muted {
+            color: var(--muted)
+        }
+
+        main {
+            width: min(1200px, 94vw);
+            margin: 28px auto 50px
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 18px
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 21px
+        }
+
+        .count {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 5px
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .search,
+        .filter {
+            font: inherit;
+            color: #f2f4f7;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            padding: 10px 12px
+        }
+
+        .search {
+            width: min(290px, 80vw)
+        }
+
+        .filters {
+            display: flex;
+            gap: 7px;
+            margin: 0 0 18px
+        }
+
+        .filter {
+            cursor: pointer;
+            font-size: 13px
+        }
+
+        .filter.active {
+            border-color: #648e73;
+            background: #263b32;
+            color: var(--accent)
+        }
+
+        .roster-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 13px
+        }
+
+        .player-card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 13px;
+            overflow: hidden
+        }
+
+        .card-top {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 15px 16px
+        }
+
+        .shirt-number {
+            width: 46px;
+            height: 46px;
+            flex: 0 0 46px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: var(--soft);
+            color: var(--accent);
+            font-weight: 800
+        }
+
+        .player-main {
+            min-width: 0;
+            flex: 1
+        }
+
+        .player-name {
+            font-weight: 750;
+            overflow-wrap: anywhere
+        }
+
+        .player-meta {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 3px
+        }
+
+        .ovr {
+            font-weight: 800;
+            font-size: 20px;
+            text-align: right
+        }
+
+        .ovr small {
+            display: block;
+            font-size: 9px;
+            letter-spacing: .1em;
+            color: var(--muted);
+            font-weight: 600
+        }
+
+        .ratings {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            padding: 0 15px 14px
+        }
+
+        .rating-chip,
+        .tag {
+            font-size: 11px;
+            border: 1px solid var(--line);
+            border-radius: 7px;
+            padding: 5px 7px;
+            color: #dce5e0;
+            background: #151a21
+        }
+
+        .rating-chip strong {
+            color: var(--accent);
+            margin-left: 4px
+        }
+
+        .profile {
+            border-top: 1px solid var(--line)
+        }
+
+        .profile summary {
+            cursor: pointer;
+            list-style: none;
+            padding: 11px 15px;
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 650
+        }
+
+        .profile summary::-webkit-details-marker {
+            display: none
+        }
+
+        .profile summary:after {
+            content: '＋';
+            float: right
+        }
+
+        .profile[open] summary:after {
+            content: '−'
+        }
+
+        .profile-body {
+            padding: 0 15px 16px;
+            display: grid;
+            gap: 15px
+        }
+
+        .section-title {
+            font-size: 10px;
+            letter-spacing: .12em;
+            color: var(--muted);
+            text-transform: uppercase;
+            margin-bottom: 7px
+        }
+
+        .attributes {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 7px
+        }
+
+        .attribute {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 7px 9px;
+            background: #151a21;
+            border-radius: 7px;
+            font-size: 12px
+        }
+
+        .attribute span:first-child {
+            color: #bdc7d2;
+            overflow-wrap: anywhere
+        }
+
+        .attribute strong {
+            color: #fff;
+            font-variant-numeric: tabular-nums
+        }
+
+        .tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap
+        }
+
+        .tag {
+            color: #dbe8df
+        }
+
+        .empty {
+            font-size: 12px;
+            color: #788494
+        }
+
+        .message {
+            padding: 16px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: var(--panel);
+            color: var(--muted)
+        }
+
+        .error {
+            border-color: #754747;
+            color: #ffb8b8
+        }
+
+        .footer {
+            text-align: center;
+            color: #788494;
+            font-size: 12px;
+            padding: 24px
+        }
+
+        @media(max-width:560px) {
+            .roster-grid {
+                grid-template-columns: 1fr
+            }
+
+            .toolbar {
+                align-items: stretch
+            }
+
+            .controls {
+                width: 100%
+            }
+
+            .search {
+                flex: 1;
+                width: auto
+            }
+
+            .attributes {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+    <script src="./roster.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="site-nav"><a class="brand" href="./index.html">GWLB</a>
+            <nav aria-label="Main navigation"><a href="./index.html">Squads</a><a class="active"
+                    href="./roster.html">Roster</a></nav>
+        </div>
+        <div class="eyebrow">GUYS WHO LOVE BALLS</div>
+        <h1>Player roster</h1>
+        <p class="muted">Player profiles, attributes, badges and calculated ratings.</p>
+    </header>
+    <main>
+        <div class="toolbar">
+            <div>
+                <h2>Team players</h2>
+                <div id="player-count" class="count">Loading roster…</div>
+            </div>
+            <div class="controls"><input id="search" class="search" type="search"
+                    placeholder="Search name, ID or jersey…" aria-label="Search players" disabled></div>
+        </div>
+        <div class="filters" role="group" aria-label="Filter roster"><button class="filter active"
+                data-filter="all">All</button><button class="filter" data-filter="outfield">Outfield</button><button
+                class="filter" data-filter="goalkeeper">Goalkeepers</button></div>
+        <div id="player-grid" class="roster-grid" aria-live="polite">
+            <div class="message">Loading team data…</div>
+        </div>
+    </main>
+    <footer class="footer">GWLB · Team management</footer>
+</body>
+
+</html>

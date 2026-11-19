@@ -2,39 +2,40 @@
 #include "Player.h"
 #include "PlayerRating.h"
 #include "Position.h"
-
-#include <nlohmann/json.hpp>
+#include "Squad.h"
 
 #include <fstream>
 #include <iostream>
-#include <ostream>
-#include <stdexcept>
-#include <string>
-#include <vector>
 
 namespace gwlb {
 
 std::vector<Position> positions;
 std::vector<Player> players;
+std::vector<Player> gks;
+std::vector<std::string> available_players;
+Squad Squads;
 std::string team_name;
 using json = nlohmann::json;
+void loadSquad() {
+  json data = LoadJson("private-data/players.json");
+
+  if (!data.contains("player")) {
+    throw std::runtime_error("Invalid JSON: expected a players array");
+  }
+  for (const auto &player : data["player"]) {
+    available_players.push_back(player.get<std::string>());
+  }
+}
 void loadPlayers(const std::filesystem::path &filePath) {
-  // Open JSON file
-  std::ifstream file(filePath);
 
-  if (!file.is_open()) {
-    throw std::runtime_error("Cannot open file: " + filePath.string());
-  }
+  json data = LoadJson(filePath);
+  json badgesJson = LoadJson("private-data/badges.json");
 
-  // Parse JSON
-  json data;
-  file >> data;
-
-  std::ifstream bf("private-data/badges.json");
-  json badgesJson = json::parse(bf);
-  if (!bf.is_open()) {
-    throw std::runtime_error("Cannot open file: private-data/badges.json");
-  }
+  //   std::ifstream bf("private-data/badges.json");
+  //   json badgesJson = json::parse(bf);
+  //   if (!bf.is_open()) {
+  //     throw std::runtime_error("Cannot open file: private-data/badges.json");
+  //   }
   // load lookup table once
   std::unordered_map<std::string, std::string> badgeTable =
       badgesJson.get<std::unordered_map<std::string, std::string>>();
@@ -87,8 +88,40 @@ void loadPlayers(const std::filesystem::path &filePath) {
         player.badges[name] = ""; // name exists on player, no description
     }
     players.push_back(player);
-    loadRequirements();
   }
+
+  // Convert JSON objects into GK objects
+  for (const auto &item : data["GK"]) {
+    Player gk;
+
+    gk.id = item.at("id").get<int>();
+
+    gk.name = item.at("name").get<std::string>();
+
+    gk.pos_abbr = item.at("position_abbr").get<std::string>();
+    gk.pos_id = POS_GK;
+    gk.pos = "Goal Keeper";
+
+    gk.jersey_number = item.at("jersey_number").get<int>();
+
+    gk.attributes =
+        item.at("attributes").get<std::unordered_map<std::string, double>>();
+
+    // "Badges" is an array of badge names
+    for (const auto &b : item.value("Badges", json::array())) {
+      if (!b.is_string())
+        continue;
+      const std::string name = b.get<std::string>();
+
+      auto it = badgeTable.find(name);
+      if (it != badgeTable.end())
+        gk.badges[name] = it->second; // name -> description
+      else
+        gk.badges[name] = ""; // name exists on player, no description
+    }
+    gks.push_back(gk);
+  }
+  loadRequirements();
 }
 void showPlayers() {
   std::cout << team_name;
@@ -104,11 +137,11 @@ void showPlayers() {
     for (const auto &[attribute, value] : player.attributes) {
       std::cout << "  " << attribute << ": " << value << '\n';
     }
-    std::cout << "      OVR\n" << "      " << calculateRating(player.id);
+    std::cout << "      OVR\n" << "      " << calculatePlayerOVR(player.id);
 
     std::cout << "\n----------------------\n";
 
-    std::cout << "  |" << player.pos_abbr << "|OVR " << player.pos << "\n"
+    std::cout << "  |" << player.pos_abbr << "|OVR\n"
               << "      " << positionRating(player.id, player.pos_id);
     std::cout << "\n----------------------\n";
 
@@ -118,21 +151,34 @@ void showPlayers() {
     }
     std::cout << "----------------------\n";
   }
+  // gk
+  for (const auto &gk : gks) {
+
+    std::cout << "\nPlayer ID: " << gk.id;
+    std::cout << "\nName: " << gk.name;
+    std::cout << "\nNo " << gk.jersey_number;
+    std::cout << "\nPosition: " << gk.pos;
+
+    std::cout << "\nAttributes:\n";
+
+    for (const auto &[attribute, value] : gk.attributes) {
+      std::cout << "  " << attribute << ": " << value << '\n';
+    }
+    std::cout << "  |" << gk.pos_abbr << "|OVR\n"
+              << "      " << positionRating(gk.id, gk.pos_id);
+    std::cout << "\n----------------------\n";
+
+    std::cout << "Badges:\n";
+    for (auto it : gk.badges) {
+      std::cout << it.first << "\n";
+    }
+    std::cout << "----------------------\n";
+  }
 }
 
 std::vector<Position> loadRequirements() {
   // Open JSON file
-  const std::string filePath = "private-data/position_requirements.json";
-  std::ifstream file(filePath);
-
-  if (!file.is_open()) {
-    throw std::runtime_error("Cannot open file: " + filePath);
-  }
-
-  // Parse JSON
-  json data;
-  file >> data;
-
+  json data = LoadJson("private-data/position_requirements.json");
   // Validate JSON structure
   if (!data.contains("positions") || !data["positions"].is_array()) {
     throw std::runtime_error(
@@ -172,29 +218,6 @@ void showRequirementForPos(int pos_id) {
 void loadPositionWeights() {
   for (auto &position : positions) {
     switch (position.pos_id) {
-    // case POS_CB:
-    //   position.weights = {{"pace", 0.035},       {"defending", 0.30},
-    //                       {"positioning", 0.15}, {"physicality", 0.30},
-    //                       {"passing", 0.25},     {"stamina", 0.065}};
-    //   break;
-
-    // case POS_CM:
-    //   position.weights = {{"passing", 0.25},   {"positioning", 0.30},
-    //                       {"stamina", 0.25},   {"physicality", 0.10},
-    //                       {"defending", 0.07}, {"shooting", 0.03}};
-    //   break;
-
-    // case POS_W:
-    //   position.weights = {{"pace", 0.30},    {"dribbling", 0.25},
-    //                       {"passing", 0.10}, {"shooting", 0.05},
-    //                       {"stamina", 0.25}, {"positioning", 0.05}};
-    //   break;
-
-    // case POS_ST:
-    //   position.weights = {{"shooting", 0.30}, {"positioning", 0.10},
-    //                       {"pace", 0.15},     {"physicality", 0.25},
-    //                       {"stamina", 0.15},  {"passing", 0.05}};
-    //   break;
     case POS_CB:
       position.weights = {{"pace", 0.2},        {"defending", 0.9},
                           {"positioning", 0.5}, {"physicality", 0.8},
@@ -225,3 +248,28 @@ void loadPositionWeights() {
   }
 }
 } // namespace gwlb
+
+json LoadJson(const std::string &filename) {
+  std::ifstream file(filename);
+
+  if (!file.is_open())
+    throw std::runtime_error("Cannot open " + filename);
+
+  json data;
+  file >> data;
+
+  return data;
+}
+
+void SaveJson(const std::string &filename, const json &data) {
+  std::filesystem::path path(filename);
+
+  std::filesystem::create_directories(path.parent_path());
+
+  std::ofstream file(path);
+
+  if (!file.is_open())
+    throw std::runtime_error("Cannot write to " + filename);
+
+  file << data.dump(4);
+}

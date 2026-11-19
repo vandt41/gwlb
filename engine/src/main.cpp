@@ -1,6 +1,5 @@
 #include "Formation.h"
 #include "JsonLoader.h"
-#include "Player.h"
 
 #include "PlayerRating.h"
 #include "Squad.h"
@@ -21,12 +20,13 @@ int main(int argc, char *argv[]) {
     std::cerr << "Error: " << e.what() << '\n';
     return 1;
   }
-  //   gwlb::showPlayers();
+  CalculateAllPlayerRatings();
   gwlb::Squad A{.formation_id = FORMATION_2_3_1,
                 .CB = {2, 13},
                 .CM = {11},
                 .WS = {8, 7},
                 .ST = {4}};
   showSquadRatings(A);
+  gwlb::showPlayers();
   return 0;
 }

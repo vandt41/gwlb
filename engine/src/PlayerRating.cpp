@@ -1,15 +1,33 @@
 #include "PlayerRating.h"
+#include "JsonLoader.h"
 #include "Player.h"
 #include "Position.h"
 #include <iostream>
-int calculateRating(int player_id) {
+#include <nlohmann/json.hpp>
+using json = nlohmann::json;
+int calculatePlayerOVR(int player_id) {
   int rating = 0;
-  const gwlb::Player *player = nullptr;
 
   for (const auto &player : gwlb::players) {
+    rating = 0;
+
     if (player_id == player.id) {
       int i = 0;
       for (const auto &[key, value] : player.attributes) {
+        i++;
+        rating += value;
+      }
+      rating = (int)(rating /= i);
+
+      return rating;
+    }
+  }
+  for (const auto &gk : gwlb::gks) {
+    rating = 0;
+
+    if (player_id == gk.id) {
+      int i = 0;
+      for (const auto &[key, value] : gk.attributes) {
         i++;
         rating += value;
       }
@@ -23,6 +41,19 @@ int calculateRating(int player_id) {
 }
 
 int positionRating(int player_id, int pos_id) {
+  if (pos_id == POS_GK) {
+    double sum = 0;
+    const gwlb::Player *gk = nullptr;
+    for (const auto &gk : gwlb::gks) {
+      if (gk.id == player_id) {
+        for (const auto &[key, val] : gk.attributes) {
+          sum += val;
+        }
+        sum /= (double)6;
+        return sum;
+      }
+    }
+  }
   // 1. Find the player
   const gwlb::Player *player = nullptr;
   for (const auto &p : gwlb::players) {
@@ -65,4 +96,18 @@ int positionRating(int player_id, int pos_id) {
   }
   double score = weight_sum > 0 ? weighted_sum / weight_sum : 0.0;
   return (int)(score);
+}
+void CalculateAllPlayerRatings() {
+  json result = json::object();
+
+  for (const auto &player : gwlb::players) {
+    result[std::to_string(player.id)] = {
+        positionRating(player.id, POS_CB), positionRating(player.id, POS_CM),
+        positionRating(player.id, POS_WS), positionRating(player.id, POS_ST),
+        calculatePlayerOVR(player.id)};
+  }
+  for (const auto &gk : gwlb::gks) {
+    result[std::to_string(gk.id)] = calculatePlayerOVR(gk.id);
+  }
+  SaveJson("private-data/players_ovrs.json", result);
 }

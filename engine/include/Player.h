@@ -22,6 +22,7 @@ struct Player {
 };
 
 extern std::vector<Player> players;
+extern std::vector<Player> gks;
 extern std::string team_name;
 
 } // namespace gwlb

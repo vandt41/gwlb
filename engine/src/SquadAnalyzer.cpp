@@ -74,4 +74,5 @@ void showSquadRatings(gwlb::Squad squad) {
   std::cout << "\t   " << "GK";
   std::cout << "\n";
   std::cout << "OVR: " << squad_ratings.OVR;
+  std::cout << "\n";
 }
