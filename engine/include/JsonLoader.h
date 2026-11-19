@@ -12,11 +12,8 @@ namespace gwlb {
 void loadPlayers(const std::filesystem::path &filePath);
 std::vector<Position> loadRequirements();
 
-void loadSquad();
-
 void showRequirementForPos(int pos_id);
 void loadPositionWeights();
-void loadBadges();
 void showPlayers();
 
 } // namespace gwlb

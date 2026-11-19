@@ -16,26 +16,12 @@ std::vector<std::string> available_players;
 Squad Squads;
 std::string team_name;
 using json = nlohmann::json;
-void loadSquad() {
-  json data = LoadJson("private-data/players.json");
 
-  if (!data.contains("player")) {
-    throw std::runtime_error("Invalid JSON: expected a players array");
-  }
-  for (const auto &player : data["player"]) {
-    available_players.push_back(player.get<std::string>());
-  }
-}
 void loadPlayers(const std::filesystem::path &filePath) {
 
   json data = LoadJson(filePath);
-  json badgesJson = LoadJson("private-data/badges.json");
+  json badgesJson = LoadJson("frontend/vanilla/data/badges.json");
 
-  //   std::ifstream bf("private-data/badges.json");
-  //   json badgesJson = json::parse(bf);
-  //   if (!bf.is_open()) {
-  //     throw std::runtime_error("Cannot open file: private-data/badges.json");
-  //   }
   // load lookup table once
   std::unordered_map<std::string, std::string> badgeTable =
       badgesJson.get<std::unordered_map<std::string, std::string>>();

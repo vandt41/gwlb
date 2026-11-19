@@ -11,7 +11,7 @@
 int main(int argc, char *argv[]) {
 
   const std::string filePath =
-      (argc > 1) ? argv[1] : "private-data/bmg_team.json";
+      (argc > 1) ? argv[1] : "frontend/vanilla/data/bmg_team.json";
 
   try {
     // Load players

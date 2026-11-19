@@ -62,7 +62,8 @@
             },
             "Skills": [],
             "Badges": [
-                "Gspot"
+                "Gspot",
+                "Lê Hầm"
             ]
         },
         {
@@ -154,7 +155,7 @@
         },
         {
             "id": 8,
-            "name": "Pinkz",
+            "name": "GiaLuat",
             "jersey_number": 9,
             "position_abbr": "CM",
             "position": "Central Midfielder",
@@ -170,7 +171,8 @@
             },
             "Skills": [],
             "Badges": [
-                "El Toro"
+                "El Toro",
+                "Pinkz"
             ]
         },
         {
@@ -347,6 +349,28 @@
             ]
         },
         {
+            "id": 17,
+            "name": "Van",
+            "jersey_number": 35,
+            "position_abbr": "CM",
+            "position": "Central Midfielder",
+            "attributes": {
+                "pace": 75,
+                "shooting": 70,
+                "passing": 75,
+                "dribbling": 70,
+                "defending": 80,
+                "stamina": 80,
+                "positioning": 75,
+                "physicality": 70
+            },
+            "Skills": [],
+            "Badges": [
+                "36",
+                "Zeus"
+            ]
+        },
+        {
             "id": 99,
             "name": "CR7",
             "jersey_number": 35,
@@ -372,7 +396,7 @@
         {
             "id": 100,
             "name": "A Khang",
-            "jersey_number": 35,
+            "jersey_number": 15,
             "position_abbr": "GK",
             "attributes": {
                 "reflexes": 100,
@@ -388,7 +412,7 @@
         {
             "id": 101,
             "name": "Tuan Anh",
-            "jersey_number": 35,
+            "jersey_number": 13,
             "position_abbr": "GK",
             "attributes": {
                 "reflexes": 100,
