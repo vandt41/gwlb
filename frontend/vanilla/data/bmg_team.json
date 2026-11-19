@@ -19,7 +19,8 @@
             },
             "Skills": [],
             "Badges": [
-                "Der Führer"
+                "Der Führer",
+                "Injured"
             ]
         },
         {
@@ -168,11 +169,13 @@
                 "physicality": 75
             },
             "Skills": [],
-            "Badges": []
+            "Badges": [
+                "El Toro"
+            ]
         },
         {
             "id": 9,
-            "name": "PhatKhung",
+            "name": "Phat",
             "jersey_number": 17,
             "position_abbr": "CM",
             "position": "Central Midfielder",
@@ -188,7 +191,8 @@
             },
             "Skills": [],
             "Badges": [
-                "The Leap Year"
+                "The Leap Year",
+                "Phat Khung"
             ]
         },
         {
