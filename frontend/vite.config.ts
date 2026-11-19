@@ -3,6 +3,6 @@ import react from "@vitejs/plugin-react";
 
 // Assumes the GitHub repository is named "GWLB".
 export default defineConfig({
-  plugins: [react()],
-  base: process.env.GITHUB_ACTIONS ? "/GWLB/" : "/",
+    plugins: [react()],
+    base: process.env.GITHUB_ACTIONS ? "/gwlb/" : "/",
 });
