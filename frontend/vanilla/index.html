@@ -578,6 +578,15 @@
             display: none
         }
 
+        .hover-home {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .hover-home:hover {
+            opacity: 1;
+        }
+
         @media(max-width:520px) {
             .pitch-board {
                 min-height: 500px
@@ -607,7 +616,7 @@
     </style>
     <script src="./app.js" defer></script>
 </head>
-<a href="/my-website/index.html">🏠 home</a><br>
+<a href="/my-website/index.html" class="hover-home">🏠 home</a><br>
 
 <body>
     <header>
