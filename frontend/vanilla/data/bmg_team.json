@@ -6,6 +6,7 @@
             "name": "XHuy",
             "jersey_number": 14,
             "position_abbr": "W",
+            "position": "Winger",
             "attributes": {
                 "pace": 75,
                 "shooting": 65,
@@ -26,6 +27,7 @@
             "name": "ChanHuy",
             "jersey_number": 16,
             "position_abbr": "CB",
+            "position": "Central Back",
             "attributes": {
                 "pace": 50,
                 "shooting": 65,
@@ -46,6 +48,7 @@
             "name": "PLam",
             "jersey_number": 77,
             "position_abbr": "ST",
+            "position": "Striker",
             "attributes": {
                 "pace": 85,
                 "shooting": 85,
@@ -66,6 +69,7 @@
             "name": "Ken",
             "jersey_number": 11,
             "position_abbr": "ST",
+            "position": "Striker",
             "attributes": {
                 "pace": 80,
                 "shooting": 85,
@@ -87,6 +91,7 @@
             "name": "Nghia",
             "jersey_number": 10,
             "position_abbr": "CM",
+            "position": "Central Midfielder",
             "attributes": {
                 "pace": 75,
                 "shooting": 50,
@@ -108,6 +113,7 @@
             "name": "HmLuan",
             "jersey_number": 28,
             "position_abbr": "CB",
+            "position": "Central Back",
             "attributes": {
                 "pace": 65,
                 "shooting": 80,
@@ -128,6 +134,7 @@
             "name": "A Hoang",
             "jersey_number": 0,
             "position_abbr": "W",
+            "position": "Winger",
             "attributes": {
                 "pace": 85,
                 "shooting": 50,
@@ -149,6 +156,7 @@
             "name": "Pinkz",
             "jersey_number": 9,
             "position_abbr": "CM",
+            "position": "Central Midfielder",
             "attributes": {
                 "pace": 80,
                 "shooting": 70,
@@ -167,6 +175,7 @@
             "name": "PhatKhung",
             "jersey_number": 17,
             "position_abbr": "CM",
+            "position": "Central Midfielder",
             "attributes": {
                 "pace": 85,
                 "shooting": 80,
@@ -187,6 +196,7 @@
             "name": "Khang",
             "jersey_number": 8,
             "position_abbr": "W",
+            "position": "Winger",
             "attributes": {
                 "pace": 60,
                 "shooting": 90,
@@ -208,6 +218,7 @@
             "name": "Luan",
             "jersey_number": 5,
             "position_abbr": "CM",
+            "position": "Central Midfielder",
             "attributes": {
                 "pace": 66,
                 "shooting": 60,
@@ -229,6 +240,7 @@
             "name": "Tri",
             "jersey_number": 35,
             "position_abbr": "W",
+            "position": "Winger",
             "attributes": {
                 "pace": 60,
                 "shooting": 75,
@@ -249,6 +261,7 @@
             "name": "A Tai",
             "jersey_number": 104,
             "position_abbr": "CB",
+            "position": "Central Back",
             "attributes": {
                 "pace": 55,
                 "shooting": 65,
@@ -269,6 +282,7 @@
             "name": "Thuong",
             "jersey_number": 35,
             "position_abbr": "W",
+            "position": "Winger",
             "attributes": {
                 "pace": 95,
                 "shooting": 75,
@@ -290,6 +304,7 @@
             "name": "Binh",
             "jersey_number": 35,
             "position_abbr": "CB",
+            "position": "Central Back",
             "attributes": {
                 "pace": 45,
                 "shooting": 50,
@@ -310,6 +325,7 @@
             "name": "Tu",
             "jersey_number": 35,
             "position_abbr": "W",
+            "position": "Winger",
             "attributes": {
                 "pace": 80,
                 "shooting": 70,
@@ -331,6 +347,7 @@
             "name": "CR7",
             "jersey_number": 35,
             "position_abbr": "W",
+            "position": "Winger",
             "attributes": {
                 "pace": 100,
                 "shooting": 100,

@@ -163,7 +163,7 @@ function ratingSummary(player) {
     } else if (values !== undefined && values !== null) {
         const chip = document.createElement('span');
         chip.className = 'rating-chip';
-        chip.textContent = 'GK OVR ';
+        chip.textContent = 'GK ';
         const strong = document.createElement('strong');
         strong.textContent = displayValue(values);
         chip.append(strong);
@@ -184,8 +184,8 @@ function createPlayerCard(player) {
     const main = document.createElement('div');
     main.className = 'player-main';
     addText(main, 'div', 'player-name', player.name);
-    const position = player.position_abbr || player.pos_abbr || (player.type === 'goalkeeper' ? 'GK' : 'Outfield');
-    addText(main, 'div', 'player-meta', `${position} · ID ${player.id}`);
+    const position = player.position || player.pos_abbr || (player.type === 'goalkeeper' ? 'GK' : 'Outfield');
+    addText(main, 'div', 'player-meta', `${position}`);
     top.append(main);
 
     const values = ratingData(player);
