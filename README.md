@@ -2,16 +2,6 @@
 
 Public, static 7-a-side team website. No accounts, backend server, or database in the MVP.
 
-## Deploy to GitHub Pages
-
-This starter assumes the repository is named `GWLB`, giving a URL like `https://YOUR_USERNAME.github.io/GWLB/`.
-
-1. Create a public GitHub repository named `GWLB`.
-2. Push this project to its `main` branch.
-3. Open repository **Settings → Pages** and choose **GitHub Actions** as the source.
-4. Push a commit or manually run the `Deploy GWLB to GitHub Pages` workflow.
-5. Wait for deployment to finish.
-
 ### Match rules
 - A match squad can contain up to 12 player IDs.
 - A confirmed starting lineup contains exactly 7 players: 1 goalkeeper and 6 outfield players.
