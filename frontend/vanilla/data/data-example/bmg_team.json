@@ -1,0 +1,384 @@
+{
+    "name": "BMG TEAM",
+    "players": [
+        {
+            "id": 1,
+            "name": "XHuy",
+            "jersey_number": 14,
+            "position_abbr": "W",
+            "attributes": {
+                "pace": 75,
+                "shooting": 65,
+                "passing": 60,
+                "dribbling": 30,
+                "defending": 80,
+                "stamina": 70,
+                "positioning": 65,
+                "physicality": 80
+            },
+            "Skills": [],
+            "Badges": [
+                "Der Führer"
+            ]
+        },
+        {
+            "id": 2,
+            "name": "ChanHuy",
+            "jersey_number": 16,
+            "position_abbr": "CB",
+            "attributes": {
+                "pace": 50,
+                "shooting": 65,
+                "passing": 80,
+                "dribbling": 40,
+                "defending": 85,
+                "stamina": 55,
+                "positioning": 75,
+                "physicality": 85
+            },
+            "Skills": [],
+            "Badges": [
+                "Diesel"
+            ]
+        },
+        {
+            "id": 3,
+            "name": "PLam",
+            "jersey_number": 77,
+            "position_abbr": "ST",
+            "attributes": {
+                "pace": 85,
+                "shooting": 85,
+                "passing": 65,
+                "dribbling": 75,
+                "defending": 55,
+                "stamina": 65,
+                "positioning": 70,
+                "physicality": 75
+            },
+            "Skills": [],
+            "Badges": [
+                "Gspot"
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Ken",
+            "jersey_number": 11,
+            "position_abbr": "ST",
+            "attributes": {
+                "pace": 80,
+                "shooting": 85,
+                "passing": 65,
+                "dribbling": 65,
+                "defending": 45,
+                "stamina": 65,
+                "positioning": 75,
+                "physicality": 85
+            },
+            "Skills": [],
+            "Badges": [
+                "A Stick",
+                "Satellite"
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Nghia",
+            "jersey_number": 10,
+            "position_abbr": "CM",
+            "attributes": {
+                "pace": 75,
+                "shooting": 50,
+                "passing": 70,
+                "dribbling": 85,
+                "defending": 65,
+                "stamina": 70,
+                "positioning": 85,
+                "physicality": 50
+            },
+            "Skills": [],
+            "Badges": [
+                "La Pulga",
+                "Bilbo Baggins"
+            ]
+        },
+        {
+            "id": 6,
+            "name": "HmLuan",
+            "jersey_number": 28,
+            "position_abbr": "CB",
+            "attributes": {
+                "pace": 65,
+                "shooting": 80,
+                "passing": 85,
+                "dribbling": 50,
+                "defending": 90,
+                "stamina": 75,
+                "positioning": 90,
+                "physicality": 75
+            },
+            "Skills": [],
+            "Badges": [
+                "Nobody"
+            ]
+        },
+        {
+            "id": 7,
+            "name": "A Hoang",
+            "jersey_number": 0,
+            "position_abbr": "W",
+            "attributes": {
+                "pace": 85,
+                "shooting": 50,
+                "passing": 50,
+                "dribbling": 75,
+                "defending": 65,
+                "stamina": 60,
+                "positioning": 65,
+                "physicality": 55
+            },
+            "Skills": [],
+            "Badges": [
+                "Sand Soldier",
+                "Fixed-Gear"
+            ]
+        },
+        {
+            "id": 8,
+            "name": "Pinkz",
+            "jersey_number": 9,
+            "position_abbr": "CM",
+            "attributes": {
+                "pace": 80,
+                "shooting": 70,
+                "passing": 75,
+                "dribbling": 80,
+                "defending": 70,
+                "stamina": 75,
+                "positioning": 80,
+                "physicality": 75
+            },
+            "Skills": [],
+            "Badges": []
+        },
+        {
+            "id": 9,
+            "name": "PhatKhung",
+            "jersey_number": 17,
+            "position_abbr": "CM",
+            "attributes": {
+                "pace": 85,
+                "shooting": 80,
+                "passing": 70,
+                "dribbling": 85,
+                "defending": 75,
+                "stamina": 90,
+                "positioning": 75,
+                "physicality": 70
+            },
+            "Skills": [],
+            "Badges": [
+                "The Leap Year"
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Khang",
+            "jersey_number": 8,
+            "position_abbr": "W",
+            "attributes": {
+                "pace": 60,
+                "shooting": 90,
+                "passing": 85,
+                "dribbling": 90,
+                "defending": 75,
+                "stamina": 70,
+                "positioning": 75,
+                "physicality": 85
+            },
+            "Skills": [],
+            "Badges": [
+                "Peter File",
+                "Erwin"
+            ]
+        },
+        {
+            "id": 11,
+            "name": "Luan",
+            "jersey_number": 5,
+            "position_abbr": "CM",
+            "attributes": {
+                "pace": 66,
+                "shooting": 60,
+                "passing": 80,
+                "dribbling": 60,
+                "defending": 72,
+                "stamina": 75,
+                "positioning": 65,
+                "physicality": 80
+            },
+            "Skills": [],
+            "Badges": [
+                "HR",
+                "Intern"
+            ]
+        },
+        {
+            "id": 12,
+            "name": "Tri",
+            "jersey_number": 35,
+            "position_abbr": "W",
+            "attributes": {
+                "pace": 60,
+                "shooting": 75,
+                "passing": 90,
+                "dribbling": 65,
+                "defending": 60,
+                "stamina": 60,
+                "positioning": 50,
+                "physicality": 50
+            },
+            "Skills": [],
+            "Badges": [
+                "bitchass nigga"
+            ]
+        },
+        {
+            "id": 13,
+            "name": "A Tai",
+            "jersey_number": 104,
+            "position_abbr": "CB",
+            "attributes": {
+                "pace": 55,
+                "shooting": 65,
+                "passing": 75,
+                "dribbling": 50,
+                "defending": 85,
+                "stamina": 65,
+                "positioning": 55,
+                "physicality": 85
+            },
+            "Skills": [],
+            "Badges": [
+                "Postal Service"
+            ]
+        },
+        {
+            "id": 14,
+            "name": "Thuong",
+            "jersey_number": 35,
+            "position_abbr": "W",
+            "attributes": {
+                "pace": 95,
+                "shooting": 75,
+                "passing": 65,
+                "dribbling": 90,
+                "defending": 75,
+                "stamina": 80,
+                "positioning": 60,
+                "physicality": 60
+            },
+            "Skills": [],
+            "Badges": [
+                "El Fantasma",
+                "Plus-one"
+            ]
+        },
+        {
+            "id": 15,
+            "name": "Binh",
+            "jersey_number": 35,
+            "position_abbr": "CB",
+            "attributes": {
+                "pace": 45,
+                "shooting": 50,
+                "passing": 65,
+                "dribbling": 50,
+                "defending": 75,
+                "stamina": 60,
+                "positioning": 50,
+                "physicality": 60
+            },
+            "Skills": [],
+            "Badges": [
+                "Lesbian"
+            ]
+        },
+        {
+            "id": 16,
+            "name": "Tu",
+            "jersey_number": 35,
+            "position_abbr": "W",
+            "attributes": {
+                "pace": 80,
+                "shooting": 70,
+                "passing": 70,
+                "dribbling": 80,
+                "defending": 70,
+                "stamina": 65,
+                "positioning": 80,
+                "physicality": 60
+            },
+            "Skills": [],
+            "Badges": [
+                "Lantern",
+                "The Bra"
+            ]
+        },
+        {
+            "id": 99,
+            "name": "CR7",
+            "jersey_number": 35,
+            "position_abbr": "W",
+            "attributes": {
+                "pace": 100,
+                "shooting": 100,
+                "passing": 100,
+                "dribbling": 100,
+                "defending": 100,
+                "stamina": 100,
+                "positioning": 100,
+                "physicality": 100
+            },
+            "Skills": [],
+            "Badges": [
+                "GOAT"
+            ]
+        }
+    ],
+    "GK": [
+        {
+            "id": 100,
+            "name": "A Khang",
+            "jersey_number": 35,
+            "position_abbr": "GK",
+            "attributes": {
+                "reflexes": 100,
+                "communication": 100,
+                "distribution": 100,
+                "aerial": 100,
+                "clearing": 100,
+                "positioning": 100
+            },
+            "Skills": [],
+            "Badges": []
+        },
+        {
+            "id": 101,
+            "name": "Tuan Anh",
+            "jersey_number": 35,
+            "position_abbr": "GK",
+            "attributes": {
+                "reflexes": 100,
+                "communication": 100,
+                "distribution": 100,
+                "aerial": 100,
+                "clearing": 100,
+                "positioning": 100
+            },
+            "Skills": [],
+            "Badges": []
+        }
+    ]
+}

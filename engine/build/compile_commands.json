@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/brianmoser/Documents/projects/gwlb/engine/build",
+  "command": "/usr/bin/c++  -I/home/brianmoser/Documents/projects/gwlb/engine/include -std=c++17 -o CMakeFiles/gwlb_engine.dir/src/main.cpp.o -c /home/brianmoser/Documents/projects/gwlb/engine/src/main.cpp",
+  "file": "/home/brianmoser/Documents/projects/gwlb/engine/src/main.cpp",
+  "output": "CMakeFiles/gwlb_engine.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/brianmoser/Documents/projects/gwlb/engine/build",
+  "command": "/usr/bin/c++  -I/home/brianmoser/Documents/projects/gwlb/engine/include -std=c++17 -o CMakeFiles/gwlb_engine.dir/src/PlayerRating.cpp.o -c /home/brianmoser/Documents/projects/gwlb/engine/src/PlayerRating.cpp",
+  "file": "/home/brianmoser/Documents/projects/gwlb/engine/src/PlayerRating.cpp",
+  "output": "CMakeFiles/gwlb_engine.dir/src/PlayerRating.cpp.o"
+},
+{
+  "directory": "/home/brianmoser/Documents/projects/gwlb/engine/build",
+  "command": "/usr/bin/c++  -I/home/brianmoser/Documents/projects/gwlb/engine/include -std=c++17 -o CMakeFiles/gwlb_engine.dir/src/JsonLoader.cpp.o -c /home/brianmoser/Documents/projects/gwlb/engine/src/JsonLoader.cpp",
+  "file": "/home/brianmoser/Documents/projects/gwlb/engine/src/JsonLoader.cpp",
+  "output": "CMakeFiles/gwlb_engine.dir/src/JsonLoader.cpp.o"
+},
+{
+  "directory": "/home/brianmoser/Documents/projects/gwlb/engine/build",
+  "command": "/usr/bin/c++  -I/home/brianmoser/Documents/projects/gwlb/engine/include -std=c++17 -o CMakeFiles/gwlb_engine.dir/src/SquadAnalyzer.cpp.o -c /home/brianmoser/Documents/projects/gwlb/engine/src/SquadAnalyzer.cpp",
+  "file": "/home/brianmoser/Documents/projects/gwlb/engine/src/SquadAnalyzer.cpp",
+  "output": "CMakeFiles/gwlb_engine.dir/src/SquadAnalyzer.cpp.o"
+}
+]

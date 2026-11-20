@@ -1,18 +1,6 @@
 {
     "positions": [
         {
-            "id": 0,
-            "position_abbr": "GK",
-            "name": "Goalkeeper",
-            "requirements": {
-                "reflexes": 0.3,
-                "handling": 0.25,
-                "positioning": 0.2,
-                "communication": 0.15,
-                "passing": 0.1
-            }
-        },
-        {
             "id": 1,
             "position_abbr": "CB",
             "name": "Centre Back",
@@ -28,7 +16,7 @@
         {
             "id": 2,
             "position_abbr": "CM",
-            "name": "Midfielder",
+            "name": "Central Midfielder",
             "requirements": {
                 "passing": 65,
                 "positioning": 70,
