@@ -109,5 +109,5 @@ void CalculateAllPlayerRatings() {
   for (const auto &gk : gwlb::gks) {
     result[std::to_string(gk.id)] = calculatePlayerOVR(gk.id);
   }
-  SaveJson("private-data/players_ovrs.json", result);
+  SaveJson("frontend/vanilla/data/players_ovrs.json", result);
 }

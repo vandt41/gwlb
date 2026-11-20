@@ -164,7 +164,7 @@ void showPlayers() {
 
 std::vector<Position> loadRequirements() {
   // Open JSON file
-  json data = LoadJson("private-data/position_requirements.json");
+  json data = LoadJson("frontend/vanilla/data/position_requirements.json");
   // Validate JSON structure
   if (!data.contains("positions") || !data["positions"].is_array()) {
     throw std::runtime_error(
