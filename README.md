@@ -21,7 +21,7 @@ On Ubuntu / Debian:
 
 ```bash
 sudo apt install build-essential cmake nlohmann-json3-dev
-
+```
 
 Build and run from the repository root:
 
@@ -30,7 +30,7 @@ cmake -S engine -B engine/build
 cmake --build engine/build
 
 ./engine/build/gwlb_engine 
-
+```
 ## Manager workflow
 
 Refer to `docs/manager-workflow.md`
